@@ -3,6 +3,7 @@ import cityData from "../../public/data/city-info.json";
 
 interface EventItem {
   id: string;
+  slug?: string;
   title: string;
   category: string;
   startDate: string;
@@ -18,6 +19,7 @@ interface EventItem {
 
 interface BenefitItem {
   id: string;
+  slug?: string;
   title: string;
   category: string;
   startDate: string;
@@ -166,7 +168,7 @@ export default function HomePage() {
                     </span>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
-                    <Link href="/blog/">
+                    <Link href={event.slug ? `/blog/${event.slug}/` : "/blog/"}>
                       {event.title}
                     </Link>
                   </h3>
@@ -208,10 +210,10 @@ export default function HomePage() {
                   {/* 카드 버튼 */}
                   <div className="pt-3">
                     <Link
-                      href="/blog/"
+                      href={event.slug ? `/blog/${event.slug}/` : "/blog/"}
                       className="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-50 text-slate-700 hover:bg-blue-600 hover:text-white border border-slate-200 hover:border-blue-600 transition-all duration-200 text-center"
                     >
-                      상세 정보 확인하기 →
+                      블로그 글 자세히 보기 →
                     </Link>
                   </div>
                 </div>
@@ -257,7 +259,7 @@ export default function HomePage() {
                 </div>
 
                 <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors mb-3">
-                  <Link href="/blog/">
+                  <Link href={benefit.slug ? `/blog/${benefit.slug}/` : "/blog/"}>
                     {benefit.title}
                   </Link>
                 </h3>
@@ -293,10 +295,10 @@ export default function HomePage() {
 
                 <div className="mt-5 pt-3">
                   <Link
-                    href="/blog/"
+                    href={benefit.slug ? `/blog/${benefit.slug}/` : "/blog/"}
                     className="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white border border-blue-200 hover:border-blue-600 transition-all duration-200 text-center"
                   >
-                    신청 방법 및 상세 내용 보기 →
+                    신청 방법 및 블로그 글 보기 →
                   </Link>
                 </div>
               </article>
